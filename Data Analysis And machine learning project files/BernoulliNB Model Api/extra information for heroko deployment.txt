@@ -1,0 +1,10 @@
+1 - create virtual enviornment 
+2- install the required libraries in it  using pip install 
+3- initiate git repository  and add all the files in it 
+4- commit changes 
+5- setup heroku cli
+6- loginh in heroku using cmd command heroku login
+7- in cmd after logining in write heroku create 
+8- final step write git push heroko master
+Follow the instructions used here to deploy ur application app.py 
+http://www.gtlambert.com/blog/deploy-flask-app-to-heroku

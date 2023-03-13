@@ -1,0 +1,259 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>passenger satisfaction prediction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- STYLE CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      .ques {
+        text-align: center;
+        font-size: 16px;
+        padding: 5px 0;
+        color: black;
+        font-weight: 600;
+      }
+      .radios {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 10px;
+      }
+      .radios .option {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0 2px;
+      }
+      .radios .option p {
+        text-align: center;
+      }
+      label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      select {
+        background-color: #ac5bac41;
+        border: none;
+        width: 180px;
+        padding: 10px 4px;
+      }
+      select option {
+        background-color: #ac5bac41;
+        padding: 20px 10px;
+      }
+      .slider {
+        padding: 10px 0 0 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .input-last {
+        width: 150px !important;
+        margin: 10px auto;
+        height: 35px;
+        border-radius: 15px;
+        background-color: #c4c4c4;
+        color: #661b66;
+      }
+      #rates,
+      .gg {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+      }
+      .gg .option {
+        margin: 0 5px;
+      }
+      .option p {
+        color: black;
+        margin-top: 4px;
+        font-weight: bold;
+      }
+      .radio-section {
+        width: 40%;
+        background-color: #661b6641;
+        margin: 10;
+        border-radius: 4px;
+        padding: 10px 0;
+      }
+      input[type="range"] {
+        accent-color: #661b66;
+        width: 250px;
+        height: 4px;
+      }
+      .slider-show {
+        text-align: center;
+        margin: 0;
+        padding: 0 0 10px;
+      }
+      .result {
+        height: 100%;
+        padding: 20px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: column;
+      }
+      .result img {
+        height: 450px;
+        width: 750px;
+      }
+      .result p {
+        text-align: center;
+        font-weight: 900;
+        color: black;
+        font-size: 25px;
+        margin-top: 10px;
+      }
+      .result button {
+        width: 280;
+        margin: 10px;
+        padding: 30px 0px;
+        font-size: 16px;
+        text-transform: capitalize;
+      }
+
+      .age {
+        width: 60%;
+        background-color: #661b6641;
+        margin: 10 auto;
+        border-radius: 4px;
+        padding: 20px;
+      }
+      .slider-show,
+      span {
+        color: black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="inner" style="display: none" id="ok">
+        <div class="result">
+          <img src="images/okay.jpg" alt="" />
+          <p>
+            It Seems That Is User Had a
+            <span style="color: green; font-weight: 900"> Perfect Flight</span>
+            Time!
+          </p>
+          <button id="restore">Check Another User</button>
+        </div>
+      </div>
+      <div class="inner" style="display: none" id="not-ok">
+        <div class="result">
+          <img src="images/no_okay.jpg" alt="" />
+          <p>
+            It Seems That This User Had a
+            <span style="color: red; font-weight: 900"> Rough Flight </span>
+            Time
+          </p>
+          <button id="restore">Check Another User</button>
+        </div>
+      </div>
+      <div class="inner" id="content">
+        <form action="">
+          <div class="section">
+            <h3 style="height: 10px">User Details</h3>
+
+            <div class="age">
+              <p class="ques">ِAge</p>
+              <div class="slider">
+                <span>7</span>
+                <input
+                  id="age"
+                  class="range"
+                  name="years-sub"
+                  type="range"
+                  min="7"
+                  max="85"
+                  step="1"
+                  value="20" />
+                <span>85</span>
+              </div>
+              <div id="years-sub" class="slider-show"></div>
+            </div>
+
+            <div>
+              <p class="ques">Class Type</p>
+              <div style="width: 100%; display: flex; justify-content: center">
+                <select name="" id="class">
+                  <option value="Business">Business</option>
+                  <option value="Eco">Economy</option>
+                  <option value="Eco_Plus">Economy Plus</option>
+                </select>
+              </div>
+            </div>
+            <div class="gg">
+              <div id="customer-type" class="radio-section">
+                <p class="ques">Customer Type</p>
+                <div class="radios">
+                  <div class="option">
+                    <input
+                      type="radio"
+                      class="radio"
+                      value="Loyal_Customer"
+                      name="Customer Type"
+                      checked />
+                    <p>Loyal</p>
+                  </div>
+                  <div class="option">
+                    <input
+                      value="disloyal_Customer"
+                      type="radio"
+                      class="radio"
+                      name="Customer Type" />
+                    <p>Dis Loyal</p>
+                  </div>
+                </div>
+              </div>
+              <div id="type-of-travel" class="radio-section">
+                <p class="ques">Type of travel</p>
+                <div class="radios">
+                  <div class="option">
+                    <input
+                      value="Personal_Travel"
+                      type="radio"
+                      class="radio"
+                      checked
+                      name="type of travel" />
+                    <p>Personal travel</p>
+                  </div>
+                  <div class="option">
+                    <input
+                      value="Business_travel"
+                      type="radio"
+                      class="radio"
+                      name="type of travel" />
+                    <p>Business Travel</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-login">
+              <button
+                id="submit"
+                style="width: 180px; margin: 10px auto; height: 44px">
+                Check
+              </button>
+            </div>
+          </div>
+          <div id="rates" class="section"></div>
+        </form>
+      </div>
+    </div>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+
+    <script src="js/main.js"></script>
+    <script src="js/function.js"></script>
+  </body>
+  <!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
